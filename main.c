@@ -12,73 +12,73 @@ typedef struct
     char cpf[12]; // CPF do cliente (11 digitos + '\0')
     char nome_cliente[50]; // Nome completo do cliente
     int idade_cliente; // Idade do cliente
-} Cliente; // definição da struct Cliente
+} Cliente; // definiï¿½ï¿½o da struct Cliente
 
 typedef struct
 {
     char cnpj[15]; // CNPJ da empresa (14 digitos + '\0')
     char nome_empresa[50]; // Nome da empresa
     char produto[50]; // Produto ou servico oferecido pela empresa
-} Empresa; // definição da struct Empresa
+} Empresa; // definiï¿½ï¿½o da struct Empresa
 
 typedef struct
 {
     char cpf_cliente[12]; // CPF do cliente devedor
     char cnpj_empresa[15]; // CNPJ da empresa credora
     float valor; // Valor da divida
-} Divida; // definição da struct Divida
+} Divida; // definiï¿½ï¿½o da struct Divida
 
 
-int BuscaCliente(Cliente *cliente, int quantidade_cliente, char cpf[]) //Função que verifica se existe um cliente ativo no sistema
+int BuscaCliente(Cliente *cliente, int quantidade_cliente, char cpf[]) //Funï¿½ï¿½o que verifica se existe um cliente ativo no sistema
 {
     for(int cont_c = 0; cont_c < quantidade_cliente; cont_c++)
     {
         if(strcmp(cliente[cont_c].cpf, cpf) == 0) // Percorre por todos os clientes cadastrados
-            return cont_c; // Se existir, ele retornará o indice que está esse cliente
+            return cont_c; // Se existir, ele retornarï¿½ o indice que estï¿½ esse cliente
     }
-    return -1; // Se não, retornará -1
+    return -1; // Se nï¿½o, retornarï¿½ -1
 }
 
-int BuscaEmpresa(Empresa *empresa, int quantidade_empresa, char cnpj[]) //Função que verifica se existe um cliente ativo no sistema
+int BuscaEmpresa(Empresa *empresa, int quantidade_empresa, char cnpj[]) //Funï¿½ï¿½o que verifica se existe um cliente ativo no sistema
 {
     for(int cont_e = 0; cont_e < quantidade_empresa; cont_e++)
     {
         if(strcmp(empresa[cont_e].cnpj, cnpj) == 0) // Percorre por todos as empresas cadastradas
-            return cont_e; // Se existir, ele retornará o indice que está essa empresa
+            return cont_e; // Se existir, ele retornarï¿½ o indice que estï¿½ essa empresa
     }
-    return -1; // Se não, retornará -1
+    return -1; // Se nï¿½o, retornarï¿½ -1
 }
 
-int BuscaDivida(Divida *divida, int quantidade_divida, char cpf_cliente[], char cnpj_empresa[]) //Função que verifica se existe uma Divida ativo no sistema
+int BuscaDivida(Divida *divida, int quantidade_divida, char cpf_cliente[], char cnpj_empresa[]) //Funï¿½ï¿½o que verifica se existe uma Divida ativo no sistema
 {
     for(int cont_d = 0; cont_d < quantidade_divida; cont_d++)
     {
         if(strcmp(divida[cont_d].cpf_cliente, cpf_cliente) == 0 && // Percorre por todos as divdas cadastradas
-                strcmp(divida[cont_d].cnpj_empresa, cnpj_empresa) == 0) // Se existir, ele retornará o indice que está essa divida-
+                strcmp(divida[cont_d].cnpj_empresa, cnpj_empresa) == 0) // Se existir, ele retornarï¿½ o indice que estï¿½ essa divida-
             return cont_d;
     }
-    return -1; // Se não, retornará -1
+    return -1; // Se nï¿½o, retornarï¿½ -1
 }
 
 int BuscaClienteEmpresa(Cliente *cliente, Empresa *empresa,
                         char cpf[], char cnpj[],
-                        int quantidade_cliente, int quantidade_empresa) // Função que busca se existe o Cliente E a empresa cadastrada, se sim, estará apta para a criação da divida
+                        int quantidade_cliente, int quantidade_empresa) // Funï¿½ï¿½o que busca se existe o Cliente E a empresa cadastrada, se sim, estarï¿½ apta para a criaï¿½ï¿½o da divida
 {
-    if(BuscaCliente(cliente, quantidade_cliente, cpf) != -1 && // Buscanndo a função BuscaCliente
+    if(BuscaCliente(cliente, quantidade_cliente, cpf) != -1 && // Buscanndo a funï¿½ï¿½o BuscaCliente
             BuscaEmpresa(empresa, quantidade_empresa, cnpj) != -1) // e a BuscaEmpresa
     {
         printf("\nCLIENTE: %s",
-               cliente[BuscaCliente(cliente, quantidade_cliente, cpf)].nome_cliente); // Já aproveita para printar para o usuario qual será o cliente e empresa
+               cliente[BuscaCliente(cliente, quantidade_cliente, cpf)].nome_cliente); // Jï¿½ aproveita para printar para o usuario qual serï¿½ o cliente e empresa
 
         printf("\nEMPRESA: %s\n",
                empresa[BuscaEmpresa(empresa, quantidade_empresa, cnpj)].nome_empresa);
 
         return 1; // Se o cliente e a empresa existir retorna 1
     }
-    return -1; // Se não, retornará -1
+    return -1; // Se nï¿½o, retornarï¿½ -1
 }
 
-void Menu() // Criação do Menu para nao repetir codigo dentro da Main
+void Menu() // Criaï¿½ï¿½o do Menu para nao repetir codigo dentro da Main
 {
     printf("\n _____________________________________________________\n");
     printf("\n ==            SGN ASSESSORIA FINANCEIRA            ==");
@@ -93,7 +93,7 @@ void Menu() // Criação do Menu para nao repetir codigo dentro da Main
     printf("\nDigite a opcao desejada: ");
 }
 
-void Qual_Struct() // Criação de um Sub Menu para nao repetir codigo dentro da Main
+void Qual_Struct() // Criaï¿½ï¿½o de um Sub Menu para nao repetir codigo dentro da Main
 {
     printf("\n _____________________________________________________\n");
     printf("\n ==     CLIENTE [1] / EMPRESA [2] / DIVIDA [3]       ==");
@@ -230,7 +230,7 @@ void CadastrarCliente(Cliente **cliente_lista, int *quantidade_cliente, int *cap
     strcpy((*cliente_lista)[*quantidade_cliente].cpf, cpf_temp); // Copia o CPF para o novo registro
 
     while(getchar() != '\n'); // Limpa todo o buffer, descartando caracteres residuais ate o '\n'
-
+    //teste de modificaÃ§Ã£o
     printf("\nDigite o nome do Cliente: ");
     fgets((*cliente_lista)[*quantidade_cliente].nome_cliente, 50, stdin); // Le o nome com espacos
     (*cliente_lista)[*quantidade_cliente].nome_cliente[strcspn(
@@ -316,7 +316,7 @@ void CadastrarDivida(Divida **divida_lista, int *quantidade_divida, int *capacid
                            quantidade_cliente, quantidade_empresa) != -1) // Se o Cliente E a empresa estiverem cadastrados
     {
         if(BuscaDivida(*divida_lista, *quantidade_divida,
-                       cpf_temp, cnpj_temp) != -1) // Busca se a divida já foi cadastrada
+                       cpf_temp, cnpj_temp) != -1) // Busca se a divida jï¿½ foi cadastrada
         {
             printf("\n== DIVIDA JA CADASTRADA ==\n");
             return;
