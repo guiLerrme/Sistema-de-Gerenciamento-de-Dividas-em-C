@@ -225,7 +225,7 @@ void CadastrarCliente(Cliente **cliente_lista, int *quantidade_cliente, int *cap
     {
         printf("\n== ESSE CPF JA CONSTA NO SISTEMA ==\n");
         return;
-    }
+    }//teste
 
     strcpy((*cliente_lista)[*quantidade_cliente].cpf, cpf_temp); // Copia o CPF para o novo registro
 
